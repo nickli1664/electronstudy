@@ -3,6 +3,8 @@ const {app, BrowserWindow} = require('electron')
 
 const { ipcMain } = require('electron')
 
+const { dialog } = require('electron')
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -60,6 +62,26 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   event.reply('asynchronous-reply', 'pong')
 })
 
+ipcMain.on('open-directory-dialog', function (event,p) {
+
+  
+  dialog.showOpenDialog({
+
+    properties: [p]
+
+  },function (files) {
+
+      //if (files){// 如果有选中
+
+        // 发送选择的对象给子进程
+        console.log("t2");
+        event.sender.send('selectedItem', files[0])
+
+      //}
+
+  })
+
+});
 
 
 

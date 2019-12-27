@@ -40,4 +40,30 @@ function returnFileSize(number) {
           }
 }
 
+function test1(){
+  console.log("go");
 
+  ipcRenderer.send('open-directory-dialog','openDirectory');
+
+  ipcRenderer.on('selectedItem',(event, arg) => {
+  //console.log("t2")// prints "pong"
+});
+
+}
+
+function getPath(e,path){
+
+            console.log(path)
+
+            if(path == null){
+
+                    alert('请选择一个文件/文件夹')
+
+            }
+
+            else{
+
+                        this.outpath = path   
+
+            }
+}

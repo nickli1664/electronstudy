@@ -1,11 +1,11 @@
 {
-  "name": "poor-committee-shear",
-  "productName": "poor-committee-shear",
+  "name": "testfid1",
+  "productName": "testfid1",
   "description": "My Electron application description",
   "keywords": [],
   "main": "./main.js",
   "version": "1.0.0",
-  "author": "sv",
+  "author": "nickli",
   "scripts": {
     "start": "electron ."
   },
