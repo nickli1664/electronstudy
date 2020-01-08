@@ -41,15 +41,79 @@ function returnFileSize(number) {
 }
 
 function test1(){
-  console.log("go");
+  //console.log("go");
 
   ipcRenderer.send('open-directory-dialog','openDirectory');
 
-  ipcRenderer.on('selectedItem',(event, arg) => {
-  //console.log("t2")// prints "pong"
+  ipcRenderer.on('selectedItemp',(event, arg) => {
+  //console.log(arg);// prints "pong"
+  if (arg != null)
+  {
+    document.getElementById('ppathb').innerHTML = arg;
+  }
 });
 
 }
+
+function changespathb(){
+  //console.log("go");
+
+  ipcRenderer.send('open-directory-dialogsecond','openDirectory');
+
+  ipcRenderer.on('selectedItems',(event, arg) => {
+  //console.log(arg);// prints "pong"
+  if (arg != null)
+  {
+    document.getElementById('spathb').innerHTML = arg;
+  }
+});
+
+}
+
+function qaddpair(){
+  var x = document.getElementById("list");
+  var option = document.createElement("option");
+  var pp = document.getElementById("ppathb").innerHTML;
+  var sp = document.getElementById("spathb").innerHTML;
+  if (pp == "Click me to choose Primary Path" || sp == "Click me to choose Secondary Path")
+  {
+    alert("Please choose two paths.");
+  }
+  else if (pp == sp)
+  {
+    alert("Please don't add the same path.");
+  }
+  else
+  {
+    option.text = pp + "  <---->  " + sp;
+    x.add(option,null);
+  }
+}
+
+function deletepair(){
+    var x = document.getElementById("list");
+    x.remove(x.selectedIndex);
+}
+
+function deployte(){
+
+}
+
+function begintest(){
+
+}
+
+function deleteccfile(){
+  
+}
+
+
+
+
+
+
+
+
 
 function getPath(e,path){
 

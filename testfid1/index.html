@@ -4,7 +4,15 @@
 <title>LinuxC&C</title>
 
 <style>
-div#waiceng
+.waiceng
+{
+  width: 600px;
+  margin: 0 0 0 25px;
+  padding: 0 0 10px 0;
+  border:0;               
+  border-bottom: 1px solid #aaa;
+}
+.waicengbak
 {
     width: 600px;
   <!--	margin: 0 0 0 25px;
@@ -25,16 +33,10 @@ label#lsccbf
 
 </style>
 
-<script>
-
-
-</script>
-
 </head>
 
-
 <body>
-<div id="waiceng">
+<div class="waiceng">
   <h3>Step 1:  Select your CC big file</h3>
   
   <p>Big File:&nbsp&nbsp
@@ -45,22 +47,37 @@ label#lsccbf
   </p>
 </div>
 
-<div id="waiceng">
+<div class="waiceng">
   <h3>Step 2:  Add your CC pair</h3>
+
+  <select id="list" size="10">
+
+  </select>
+
   <p><label>PrimaryPath:</label>
-    <button id="ppathb" onclick="test1()">Click me to choose PrimaryPath</button>
+    <button id="ppathb" onclick="test1()">Click me to choose Primary Path</button>
   </p>
   <p><label>SecondaryPath:</label>
+    <button id="spathb" onclick="changespathb()">Click me to choose Secondary Path</button>
   </p>
-
+  <div id="threebutton">
+    <button id="addpath" onclick="qaddpair()">Quick add pair</button>
+    <button id="deletepath" onclick="deletepair()">Delete pair</button>
+  </div>
 </div>
 
-<script>
+<div class="waiceng">
+  <h3>Step 3:  Deploy test environment</h3>
+  <button id="deployte" onclick="deployte()">Deploy</button>
+</div>
 
-</script>
+<div class="waiceng">
+  <h3>Step 4:  Begin test</h3>
+  <button id="begintest" onclick="begintest()">Begin test</button>
+  <button id="deleteccfile" onclick="deleteccfile()">Delete CC file</button>
+</div>
 
 <script  src="renderer.js"></script>
-
 
 </body>
 </html>

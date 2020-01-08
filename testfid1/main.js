@@ -9,6 +9,8 @@ const { dialog } = require('electron')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+let ppathstring
+
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -62,27 +64,31 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   event.reply('asynchronous-reply', 'pong')
 })
 
-ipcMain.on('open-directory-dialog', function (event,p) {
+ipcMain.on('open-directory-dialog', function (event) {
 
+  dialog.showOpenDialog({ title: "choose PrimaryPath", properties: ['openDirectory'] }).then(
+    result => { 
+      //console.log(result.filePaths[0]) 
+      //ppathstring = result.filePaths[0];
+      event.sender.send('selectedItemp', result.filePaths[0]);
+      }
+  );
   
-  dialog.showOpenDialog({
-
-    properties: [p]
-
-  },function (files) {
-
-      //if (files){// 如果有选中
-
-        // 发送选择的对象给子进程
-        console.log("t2");
-        event.sender.send('selectedItem', files[0])
-
-      //}
-
-  })
 
 });
 
+ipcMain.on('open-directory-dialogsecond', function (event) {
+
+  dialog.showOpenDialog({ title: "choose SecondaryPath", properties: ['openDirectory'] }).then(
+    result => { 
+      //console.log(result.filePaths[0]) 
+      //ppathstring = result.filePaths[0];
+      event.sender.send('selectedItems', result.filePaths[0]);
+      }
+  );
+  
+
+});
 
 
 // In this file you can include the rest of your app's specific main process
